@@ -202,6 +202,7 @@ export function predecessorsStep(deps: PlanningDeps): Step {
         const on = waiting.map((b) => `${b.ref} (${b.why})`).join(", ");
         return {
           kind: "retry",
+          afterMs: 30_000,
           reason: `Waiting on predecessor${waiting.length === 1 ? "" : "s"} ${on}`,
           wait: {
             kind: "gate",
